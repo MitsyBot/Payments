@@ -1,0 +1,9 @@
+{
+    "mongo_uri": "",
+    "discord_notify_webhook": "",
+    "mitsy_api_token": "",
+    "website_url": "",
+    "payments_token": "",
+    "oauth_server_url": "",
+    "port": "3000"
+}

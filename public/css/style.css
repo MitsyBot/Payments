@@ -1,0 +1,290 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #f895fb;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+button.button {
+  border: 0;
+}
+
+.button {
+  padding: 0.5em 1em;
+  box-sizing: border-box;
+  border-radius: 6px;
+  transition: 0.75s;
+  text-decoration: none;
+}
+.button.has-shadow {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+.button.is-big {
+  font-size: 1.25em;
+}
+.button.is-inline {
+  display: inline-flex;
+}
+.button:hover {
+  cursor: pointer;
+}
+.button[disabled] {
+  cursor: not-allowed;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.left-aligned-text {
+  text-align: left;
+}
+
+.right-aligned-text {
+  text-align: right;
+}
+
+hr {
+  box-sizing: content-box;
+  background: rgba(0, 0, 0, 0.05);
+  border: 0;
+  height: 1px;
+}
+
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: local("Lato Hairline"), local("Lato-Hairline"), url(https://fonts.gstatic.com/s/lato/v16/S6u8w4BMUTPHh30AUi-qJCY.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: local("Lato Hairline"), local("Lato-Hairline"), url(https://fonts.gstatic.com/s/lato/v16/S6u8w4BMUTPHh30AXC-q.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local("Lato Light"), local("Lato-Light"), url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh7USSwaPGR_p.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local("Lato Light"), local("Lato-Light"), url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh7USSwiPGQ.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Lato Regular"), local("Lato-Regular"), url(https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjxAwXjeu.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Lato Regular"), local("Lato-Regular"), url(https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wXg.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Lato Bold"), local("Lato-Bold"), url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh6UVSwaPGR_p.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Lato Bold"), local("Lato-Bold"), url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh6UVSwiPGQ.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local("Lato Black"), local("Lato-Black"), url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh50XSwaPGR_p.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local("Lato Black"), local("Lato-Black"), url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh50XSwiPGQ.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+body {
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  background-color: #ae37ee;
+  color: white;
+  overflow-x: true;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.button.primary {
+  background-color: #ec4ce8;
+  color: white;
+}
+.button.primary:hover {
+  background-color: #f895fb;
+}
+.button.primary.has-shadow:hover {
+  box-shadow: 0 0 15px #f895fb, 0 0 15px #f895fb, 0 0 15px #f895fb;
+}
+
+
+li {
+  margin-top: 0.7em;
+}
+
+a {
+  background-color: transparent;
+  color: #f381f3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input {
+  margin: 8px 0;
+  border: 1px solid #c7c9cb;
+  border-radius: 4px;
+  background-color: #fbfbfc;
+  padding: 8px;
+}
+
+#wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
+  max-width: 50em;
+}
+#wrapper.payment-methods-menu h1 {
+  font-size: 3em;
+  text-align: center;
+}
+
+#warning-screen {
+  display: flex;
+  min-height: 100vh;
+  width: 80vw;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+  flex-direction: column;
+}
+#warning-screen img {
+  width: 300px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#payment-header {
+  background-color: #f895fb;
+  text-align: left;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  box-shadow: 0px 0px 10px #00000059;
+  display: flex;
+  justify-content: center;
+  color: white;
+  margin-bottom: 2em;
+}
+#payment-header h1, #payment-header h2, #payment-header h3, #payment-header h4, #payment-header h5 {
+  color: white;
+  margin: 0px;
+}
+#payment-header .divisor {
+  width: 2px;
+  background-color: #f895fb;
+  margin-left: 1em;
+  margin-right: 1em;
+  align-self: stretch;
+}
+
+#payment-methods {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 2em;
+  margin: auto;
+  justify-content: center;
+  width: 100%;
+}
+#payment-methods .payment-button {
+  background-color: #bb59f0;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #00000017;
+  transition: 0.5s;
+}
+#payment-methods .payment-button:hover {
+  box-shadow: 0 0 10px #f895fb;
+  border-color: #f895fb;
+}
+
+form, button {
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+}
+
+@media (min-width: 600px) {
+  #payment-methods {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 900px) {
+  #payment-methods {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

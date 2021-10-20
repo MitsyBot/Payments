@@ -1,0 +1,81 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/mainpage.js"></script>
+    <link type="text/css" href="/css/style.css" rel="stylesheet">
+</head>
+
+<body cz-shortcut-listen="true">
+
+<div id="gatewayschoose">
+    <div id="payment-header">
+        <div>
+            <h1>Como você quer pagar?</h1>
+        </div>
+        <div class="divisor">
+        </div>
+            <div>
+                <div>
+                    <b>Produto: </b>
+                    Usuario vai aqui
+                </div>
+                <div>
+                    <b>Valor: </b>Valor
+                </div>
+            </div>
+    </div>
+    <div id="wrapper">
+        <div id="payment-methods">
+            <div class="payment-button" onclick="return mostrar('picpay','gatewayschoose');">
+                <img src="/assets/picpay.svg" alt="gateways.picpay.name" style="width: 100%; max-height: 80px;"><span style="display: block;">Cartão de Crédito, Saldo do PicPay</span></div>
+        </div>
+    </div>
+</div>
+
+<div id="picpay" style="display:none">
+    <div id="payment-header">
+        <div>
+            <h1>Preencha seus dados</h1>
+        </div>
+        <div class="divisor">
+        </div>
+            <div>
+                <div>
+                    <b>Produto: </b>
+                    Usuario vai aqui
+                </div>
+                <div>
+                    <b>Valor: </b>Valor
+                </div>
+            </div>
+    </div>
+    <div id="wrapper">
+        <div style="font-weight: bold;">Nome</div>
+        <input onchange="allfilled(), filled('nome')" id="nome" type="text" nome="Name" placeholder="Seu nome" style="width: 100%; border: 1px solid rgb(250, 109, 109)">
+        <div id="notnome" style="color: rgb(250, 109, 109);">Nome Inválido!</div>
+        <div style="font-weight: bold;">Sobrenome</div>
+        <input id="sobrenome" onchange="allfilled(), filled('sobrenome')" type="text" placeholder="Seu sobrenome" style="width: 100%; border: 1px solid rgb(250, 109, 109)">
+        <div id="notsobrenome" style="color: rgb(250, 109, 109);">Sobrenome Inválido!</div>
+        <div style="font-weight: bold;">Email</div>
+        <input id="email" onchange="allfilled(), filled('email')" type="text" placeholder="exemplo@mitsy.website" style="width: 100%; border: 1px solid rgb(250, 109, 109)">
+        <div id="notemail" style="color: rgb(250, 109, 109);">Email Inválido!</div>
+        <div style="font-weight: bold;">CPF</div>
+        <input id="cpf" onchange="allfilled(), filled('cpf')" type="text" placeholder="111.222.333-45" style="width: 100%; border: 1px solid rgb(250, 109, 109)">
+        <div id="notcpf" style="color: rgb(250, 109, 109);">CPF Inválido!</div>
+        <div style="font-weight: bold;">Número de Telefone</div>
+        <input id="number" onchange="allfilled(), filled('number')" type="text" placeholder="+55 (11) 2233-4455" style="width: 100%; border: 1px solid rgb(250, 109, 109)">
+        <div id="notnumber" style="color: rgb(250, 109, 109);">Numero de telefone Inválido!</div>
+        <p>As suas informações pessoais serão utilizadas apenas pelo PicPay para processar o pagamento, A mitsy não ira salvar os seus dados pessoais.</p>
+        <hr>
+        <button disabled="" onclick="botao()" id="botao" class="button primary" style="width: 100%;">Continuar ao Pagamento</button>
+        </div>
+
+</div>
+
+    <footer style="text-align: center;">
+        <p>Este serviço é experimental caso tenha problemas no pagamento, <a href="https://mitsy.website/suporte">clique aqui</a>.
+        </p>
+    </footer>
+
+</body>
+</html>
