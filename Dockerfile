@@ -18,3 +18,5 @@ ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=5671
 
 EXPOSE 5671
+
+CMD [ "npm", "start" ]
