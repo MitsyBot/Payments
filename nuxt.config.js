@@ -16,7 +16,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  css: [{ src: 'roboto-base64', lang: 'css' }, '@/assets/css/styles.css'],
+  css: ['@/assets/css/styles.css'],
 
   loading: { color: '#f895fb' },
 
