@@ -37,9 +37,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install dependencies 👨🏻‍💻
+      - name: Instalar Dependencias 👨🏻‍💻
         run: npm ci --prefer-offline --no-audit
 
-      - name: Run linter 👀
+      - name: Rodar linter 👀
         run: npm run lint
 
