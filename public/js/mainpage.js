@@ -20,6 +20,11 @@ function mostrar(shown, hidden) {
       }
   }
   
+function verifyIfPaymentIdExists(){
+    
+
+}
+
   function filled(id) {
       if(document.getElementById(id).value.length == 0)
   {
