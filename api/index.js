@@ -4,7 +4,6 @@ const express = require('express')
 const ApiRouter = require('./router.js')
 const NotFound = require('./middlewares/NotFound')
 const ErrorHandler = require('./middlewares/ErrorHandler')
-const isAuthorized = require('./middlewares/isAuth')
 const app = express()
 
 app.use(cors())
@@ -16,7 +15,7 @@ app.use((_, res, next) => {
   return next()
 })
 
-app.use(isAuthorized, ApiRouter)
+app.use(ApiRouter)
 
 app.use(NotFound)
 app.use(ErrorHandler)

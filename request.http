@@ -1,3 +1,7 @@
-GET http://localhost:5671/api/getpayment/21e4dece-dc53-4c24-848f-cd742b2e92a2 HTTP/1.1
+POST http://localhost:5671/api/hooks/picpay HTTP/1.1
 content-type: application/json
-Authorization: DWQDIOASDQWDUYIQKWMNQSDGWIUOQSKDW
+
+{
+  "referenceId": "MITSY-PREMIUM-153963",
+  "authorizationId": "5b01780ba8914c001a007673"
+}

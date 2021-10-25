@@ -23,7 +23,7 @@ module.exports = class PicPayCreate {
 
     const body = {
       referenceId: refid,
-      callbackUrl: `${process.env.URL}/api/callback/picpaycallback`,
+      callbackUrl: `${process.env.URL}/hooks/picpay`,
       returnUrl: `${process.env.URL}/return`,
       value: price,
       expiresAt: expires,
