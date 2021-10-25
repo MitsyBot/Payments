@@ -18,6 +18,10 @@ export default {
   },
   css: ['@/assets/css/styles.css'],
 
+  serverMiddleware: {
+    '/api/': '~/api'
+  },
+
   loading: { color: '#f895fb' },
 
   plugins: [
@@ -27,7 +31,8 @@ export default {
 
   buildModules: [
     '@nuxtjs/eslint-module',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/dotenv'
   ],
 
   modules: [

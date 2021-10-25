@@ -1,0 +1,10 @@
+POST http://localhost:5671/api/registerpayment HTTP/1.1
+content-type: application/json
+Authorization: DWQDIOASDQWDUYIQKWMNQSDGWIUOQSKDW
+
+{
+    "buyerid": "12301203120-1",
+    "productrefid": "MITSY-PREMIUM-15463",
+    "price": 2.99,
+    "paid": "false"
+}
