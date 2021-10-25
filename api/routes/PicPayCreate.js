@@ -1,4 +1,6 @@
 const fetch = require('node-fetch')
+const db = require('../mongo/db')
+const Transactions = db.Mongoose.model('transactions', db.TransactionsSchema, 'transactions')
 
 module.exports = class PicPayCreate {
   static async sendInfos (req, res) {
@@ -47,5 +49,12 @@ module.exports = class PicPayCreate {
       }
     }).then(res => res.json())
       .then(json => res.status(200).json(json.paymentUrl))
+      .then(async () => {
+        const value = { productrefid: refid }
+        const paid = { prepaid: 'true' }
+        await Transactions.findOneAndUpdate(value, paid, {
+          new: true
+        })
+      })
   }
 }
