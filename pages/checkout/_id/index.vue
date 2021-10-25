@@ -1,5 +1,14 @@
 <template>
-  <div>
+  <h1 v-if="$fetchState.pending" class="text-center text-6xl text-pink-500">
+    Carregando payment data
+  </h1>
+  <h1 v-else-if="$fetchState.error">
+    Ocorreu um erro ao carregar paymentdata
+  </h1>
+  <div v-else>
+    <PayHeader
+      title="Como você quer pagar?"
+    />
     <div id="wrapper">
       <div id="payment-methods">
         <NuxtLink :to="`/checkout/${$route.params.id}/gateways/picpay`">
@@ -9,18 +18,29 @@
         </NuxtLink>
       </div>
     </div>
+    <PayFooter />
   </div>
 </template>
 
 <script>
 export default {
-  layout: 'InPayment',
+  data () {
+    return {
+      data: null
+    }
+  },
+
+  async fetch () {
+    this.$axios.setToken(process.env.API_TOKEN)
+    await this.$axios.get(`http://localhost:5671/api/getpayment/${this.$route.params.id}`)
+      .then(response => (this.data = JSON.parse(JSON.stringify(response.data))))
+  },
   head: {
     title: 'Escolha a forma de pagamento'
   },
+
   mounted () {
     this.$axios.setToken(process.env.API_TOKEN)
-    this.$axios.setHeader('Content-Type', 'application/json')
     this.$axios.$get(`http://localhost:5671/api/getpayment/${this.$route.params.id}`)
       .then((response) => {
         if (response[0].paid === 'true' || response[0].prepaid === 'true') {

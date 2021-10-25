@@ -4,6 +4,7 @@ mongoose.connect(process.env.MONGO_URL)
 const transactionsSchema = new mongoose.Schema({
   uuid: String,
   buyerid: String,
+  buyerusername: String,
   productrefid: String,
   price: Number,
   expires: String,
