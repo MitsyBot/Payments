@@ -11,5 +11,4 @@ router.post('/createPicpayPayment', isAuthorized, PicPayCreate.sendInfos)
 router.post('/registerpayment', CreatePayment.registerPayment)
 router.get('/getpayment/:uuid', isAuthorized, CreatePayment.getPayment)
 router.post('/hooks/picpay', PicPayHook.picpayHook)
-
 module.exports = router

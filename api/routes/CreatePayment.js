@@ -28,7 +28,8 @@ module.exports = class CreatePayment {
       price: req.body.price,
       buyerusername: req.body.buyerusername,
       expires: resolveddate,
-      paid: req.body.paid
+      paid: false,
+      prepaid: false
     })
     await newTransaction.save().then(res.status(200).json({ redirect: `${process.env.URL}/checkout/${newuuid}` }))
   }
