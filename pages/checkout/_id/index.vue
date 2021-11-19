@@ -32,7 +32,7 @@ export default {
 
   async fetch () {
     this.$axios.setToken(process.env.API_TOKEN)
-    await this.$axios.get(`http://localhost:5671/api/getpayment/${this.$route.params.id}`)
+    await this.$axios.get(`${process.env.URL}/api/getpayment/${this.$route.params.id}`)
       .then(response => (this.data = JSON.parse(JSON.stringify(response.data))))
   },
   head: {
@@ -41,7 +41,7 @@ export default {
 
   mounted () {
     this.$axios.setToken(process.env.API_TOKEN)
-    this.$axios.$get(`http://localhost:5671/api/getpayment/${this.$route.params.id}`)
+    this.$axios.$get(`${process.env.URL}/api/getpayment/${this.$route.params.id}`)
       .then((response) => {
         if (response[0].paid === 'true' || response[0].prepaid === 'true') {
           this.$router.push('/missing')

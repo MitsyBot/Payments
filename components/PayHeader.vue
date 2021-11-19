@@ -16,7 +16,7 @@
         {{ buyer }}
       </div>
       <div>
-        <b>Valor: </b>{{ price }}
+        <b>Valor: </b>R${{ price }}
       </div>
     </div>
   </div>
@@ -41,7 +41,7 @@ export default {
   },
   async fetch () {
     this.$axios.setToken(process.env.API_TOKEN)
-    await this.$axios.get(`http://localhost:5671/api/getpayment/${this.$route.params.id}`)
+    await this.$axios.get(`${process.env.URL}/api/getpayment/${this.$route.params.id}`)
       .then(response => (this.data = JSON.parse(JSON.stringify(response.data))))
 
     this.refid = this.data[0].productrefid

@@ -30,7 +30,7 @@ module.exports = class CreatePayment {
       expires: resolveddate,
       paid: req.body.paid
     })
-    await newTransaction.save().then(res.status(200).json(`${process.env.URL}/checkout/${newuuid}`))
+    await newTransaction.save().then(res.status(200).json({ redirect: `${process.env.URL}/checkout/${newuuid}` }))
   }
 
   // Finalizar e enviar o link de compra para o website que gerou.

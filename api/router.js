@@ -8,7 +8,7 @@ const isAuthorized = require('./middlewares/isAuth')
 
 router.post('/createPicpayPayment', isAuthorized, PicPayCreate.sendInfos)
 
-router.post('/registerpayment', isAuthorized, CreatePayment.registerPayment)
+router.post('/registerpayment', CreatePayment.registerPayment)
 router.get('/getpayment/:uuid', isAuthorized, CreatePayment.getPayment)
 router.post('/hooks/picpay', PicPayHook.picpayHook)
 
