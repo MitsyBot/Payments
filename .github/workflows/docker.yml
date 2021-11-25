@@ -3,7 +3,7 @@ name: GHCR-MITSY-MOTHERLODE
 on:
   push:
     branches:
-      - master
+      - development
 
 jobs:
   push_to_registry:
