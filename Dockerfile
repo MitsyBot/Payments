@@ -22,4 +22,4 @@ WORKDIR /usr/src/motherlode
 COPY --from=builder /usr/src/motherlode /usr/src/motherlode
 EXPOSE 5671
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]
