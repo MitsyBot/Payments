@@ -17,8 +17,6 @@ EXPOSE 5671
 ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=5671
 
-LABEL org.opencontainers.image.source="https://github.com/MitsyBot/Motherlode"
-
 FROM node:14-alpine as runner
 
 LABEL org.opencontainers.image.source="https://github.com/MitsyBot/Motherlode"
