@@ -1,6 +1,5 @@
 const fetch = require('node-fetch')
-const db = require('../mongo/db')
-const Transactions = db.Mongoose.model('transactions', db.TransactionsSchema, 'transactions')
+const database = require('../database/mongo')
 
 module.exports = class PicPayCreate {
   static async sendInfos (req, res) {
@@ -11,17 +10,11 @@ module.exports = class PicPayCreate {
     const { buyermail } = req.body
     const { uuid } = req.body
 
-    const paymentdata = await (await fetch(`${process.env.URL}/api/getpayment/${uuid}`, {
-      method: 'GET',
-      headers: {
-        Authorization: process.env.API_TOKEN,
-        'content-type': 'application/json'
-      }
-    })).json()
+    const pagamento = await database.getPayment(uuid)
 
-    const refid = paymentdata[0].productrefid
-    const expires = paymentdata[0].expires
-    const price = paymentdata[0].price
+    const refid = pagamento.productrefid
+    const expires = pagamento.expires
+    const price = pagamento.price
 
     const body = {
       referenceId: refid,
@@ -39,7 +32,7 @@ module.exports = class PicPayCreate {
       }
     }
 
-    await fetch('https://appws.picpay.com/ecommerce/public/payments/', {
+    const picpay = await fetch('https://appws.picpay.com/ecommerce/public/payments/', {
       method: 'POST',
       body: JSON.stringify(body),
       headers: {
@@ -48,13 +41,9 @@ module.exports = class PicPayCreate {
         'content-type': 'application/json'
       }
     }).then(res => res.json())
-      .then(json => res.status(200).json(json.paymentUrl))
-      .then(async () => {
-        const value = { productrefid: refid }
-        const paid = { prepaid: 'true' }
-        await Transactions.findOneAndUpdate(value, paid, {
-          new: true
-        })
-      })
+
+    res.status(200).json(picpay.paymentUrl)
+
+    await database.setPrepaid(refid)
   }
 }

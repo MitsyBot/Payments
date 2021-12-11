@@ -33,20 +33,18 @@ export default {
   },
   data () {
     return {
-      data: null,
       refid: null,
       price: null,
       buyer: null
     }
   },
   async fetch () {
-    this.$axios.setToken(process.env.API_TOKEN)
-    await this.$axios.get(`${process.env.URL}/api/getpayment/${this.$route.params.id}`)
-      .then(response => (this.data = JSON.parse(JSON.stringify(response.data))))
+    const payment = await this.$axios.get(`${process.env.URL}/api/getpayment/${this.$route.params.id}`)
+      .then(response => (this.data = response.data))
 
-    this.refid = this.data[0].productrefid
-    this.price = this.data[0].price
-    this.buyer = this.data[0].buyerusername
+    this.refid = payment.productrefid
+    this.price = payment.price
+    this.buyer = payment.buyerusername
   }
 }
 </script>

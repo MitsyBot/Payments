@@ -16,30 +16,14 @@
 
 <script>
 export default {
-  data () {
-    return {
-      data: null
-    }
-  },
-
   async fetch () {
-    this.$axios.setToken(process.env.API_TOKEN)
-    await this.$axios.get(`${process.env.URL}/api/getpayment/${this.$route.params.id}`)
-      .then(response => (this.data = JSON.parse(JSON.stringify(response.data))))
+    const payment = await this.$axios.get(`${process.env.URL}/api/getpayment/${this.$route.params.id}`)
+    if (payment.data.paid === 'true' || payment.data.prepaid === 'true') {
+      this.$router.push('/missing')
+    }
   },
   head: {
     title: 'Preencha suas informações'
-  },
-
-  mounted () {
-    this.$axios.setToken(process.env.API_TOKEN)
-    this.$axios.$get(`${process.env.URL}/api/getpayment/${this.$route.params.id}`)
-      .then((response) => {
-        if (response[0].paid === 'true' || response[0].prepaid === 'true') {
-          this.$router.push('/missing')
-        }
-      })
   }
-
 }
 </script>

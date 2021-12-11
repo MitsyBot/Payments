@@ -101,7 +101,6 @@ export default {
       if (this.nome && this.sobrenome && this.email && this.cpf && this.number) {
         // eslint-disable-next-line no-console
         console.log('[MitsyBackend] Sending data to Polux API')
-        this.$axios.setToken(process.env.API_TOKEN)
         this.$axios.setHeader('Content-Type', 'application/json')
         this.$axios.$post(`${process.env.URL}/api/createPicpayPayment`, {
           nome: this.nome,
