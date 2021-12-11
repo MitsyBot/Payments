@@ -15,6 +15,7 @@ module.exports = class PicPayHook {
       }
     }).then(res => res.json())
 
+<<<<<<< HEAD
     if (status.status === 'paid') {
       await database.setPaid(refid)
 
@@ -30,6 +31,23 @@ module.exports = class PicPayHook {
         headers: {
           Authorization: process.env.MITSY_API_TOKEN,
           'content-type': 'application/json'
+=======
+          await Transactions.find({ productrefid: refid })
+            .then(async (transactioninfo) => {
+              const body = {
+                userid: transactioninfo[0].buyerid,
+                price: transactioninfo[0].price
+              }
+              await fetch(`${process.env.API_URL}/postPremiumBuy`, {
+                method: 'POST',
+                body: JSON.stringify(body),
+                headers: {
+                  Authorization: process.env.MITSY_API_TOKEN,
+                  'content-type': 'application/json'
+                }
+              })
+            })
+>>>>>>> a6afad169da508342f142a752af3cbdbcce66799
         }
       })
     }

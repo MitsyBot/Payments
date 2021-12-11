@@ -1,5 +1,4 @@
 FROM node:14-alpine as builder
-LABEL org.opencontainers.image.source="https://github.com/MitsyBot/Motherlode"
 
 RUN mkdir -p /usr/src/motherlode
 WORKDIR /usr/src/motherlode
@@ -18,6 +17,7 @@ ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=5671
 
 FROM node:14-alpine as runner
+
 WORKDIR /usr/src/motherlode
 COPY --from=builder /usr/src/motherlode /usr/src/motherlode
 EXPOSE 5671
