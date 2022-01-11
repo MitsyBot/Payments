@@ -1,7 +1,0 @@
-POST http://localhost:5671/api/hooks/picpay HTTP/1.1
-content-type: application/json
-
-{
-  "referenceId": "MITSY-PREMIUM-153963",
-  "authorizationId": "5b01780ba8914c001a007673"
-}
