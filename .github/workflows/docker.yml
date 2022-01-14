@@ -43,4 +43,4 @@ jobs:
             docker stop Payments
             docker image rm ghcr.io/mitsybot/payments:latest
             docker pull ghcr.io/mitsybot/payments:latest
-            docker run -it --rm -d -p 5671:5671 --name Payments ghcr.io/mitsybot/payments:latest
+            docker run -it --rm -d -p 5671:5671 -e MONGO_URL='${{ secrets.DATABASE }}' --name Payments ghcr.io/mitsybot/payments:latest
