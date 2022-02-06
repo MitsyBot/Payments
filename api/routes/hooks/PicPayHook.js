@@ -25,7 +25,7 @@ module.exports = class PicPayHook {
         userid: compra.buyerid,
         price: compra.price
       }
-      await fetch(`${process.env.API_URL}/postPremiumBuy`, {
+      await fetch(`${process.env.API_URL}/premium/buy`, {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
