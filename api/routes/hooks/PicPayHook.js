@@ -21,10 +21,11 @@ module.exports = class PicPayHook {
       const compra = await database.getPaymentByRef(refid)
 
       const body = {
+        ref: refid,
         userid: compra.buyerid,
         price: compra.price
       }
-      await fetch(`${process.env.API_URL}/api/postPremiumBuy`, {
+      await fetch(`${process.env.API_URL}/postPremiumBuy`, {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
