@@ -41,6 +41,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             docker stop Payments
+            docker rm Payments
             docker image rm ghcr.io/mitsybot/payments:latest
             docker pull ghcr.io/mitsybot/payments:latest
-            docker run -it --rm -d -p 5671:5671 -e MONGO_URL='${{ secrets.DATABASE }}' --name Payments ghcr.io/mitsybot/payments:latest
+            docker run -it --rm -p 5671:5671 -e MONGO_URL='${{ secrets.DATABASE }}' --name Payments ghcr.io/mitsybot/payments:latest
