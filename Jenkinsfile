@@ -42,9 +42,6 @@ pipeline {
             remote.user = userName
             remote.password = passWord
             remote.allowAnyHosts = true
-            sshCommand remote: remote, command: "docker stop Payments"
-            sshCommand remote: remote, command: "docker rm Payments"
-            sshCommand remote: remote, command: "docker image rm ghcr.io/mitsybot/poluxtrail:latest"
             sshCommand remote: remote, command: "docker pull ghcr.io/mitsybot/poluxtrail:latest"
             sshCommand remote: remote, command: "docker run -it -d -p 5671:5671 -e MONGO_URL='mongodb://mitsybot:mitsy32134@198.12.96.170:27017/mitsy?authSource=admin' --name Payments ghcr.io/poluxtrail/payments:latest"
             }
