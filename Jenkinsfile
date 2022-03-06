@@ -50,7 +50,7 @@ pipeline {
             sshCommand remote: remote, command: "docker rm Payments"
             sshCommand remote: remote, command: "docker image rm ghcr.io/poluxtrail/payments:latest"
             sshCommand remote: remote, command: "docker pull ghcr.io/poluxtrail/payments:latest"
-            sshCommand remote: remote, command: "docker run -it -d -p 5671:5671 -e MONGO_URL='mongodb://mitsybot:mitsy32134@198.12.96.170:27017/mitsy?authSource=admin' --name Payments ghcr.io/poluxtrail/payments:latest"
+            sshCommand remote: remote, command: "docker run -it -d -p 5671:5671 --name Payments ghcr.io/poluxtrail/payments:latest"
             }
         }
       } 

@@ -74,7 +74,6 @@
           style="width: 100%; border: 1px solid"
         >
 
-        <p>As suas informações pessoais serão utilizadas apenas pelo PicPay para processar o pagamento, A mitsy não ira salvar os seus dados pessoais.</p>
         <hr>
         <input id="botao" type="submit" value="Continuar ao pagamento" class="button primary" style="width: 100%;">
       </form>
@@ -109,8 +108,9 @@ export default {
           number: this.number,
           buyermail: this.email,
           uuid: this.$route.params.id
-        }).then((response) => {
-          window.location.href = response
+        }).then((request) => {
+          this.$parent.$parent.$data.qr = request
+          this.$parent.$parent.qrStage()
         })
       } else {
         this.errors = []

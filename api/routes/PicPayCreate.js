@@ -1,27 +1,23 @@
 const fetch = require('node-fetch')
-const database = require('../database/mongo')
+const DbSet = require('../database/DbSet')
 
 module.exports = class PicPayCreate {
   static async sendInfos (req, res) {
-    const { nome } = req.body
-    const { sobrenome } = req.body
-    const { cpf } = req.body
-    const { number } = req.body
-    const { buyermail } = req.body
-    const { uuid } = req.body
+    const { nome, sobrenome, cpf, number, buyermail, uuid } = req.body
 
-    const pagamento = await database.getPayment(uuid)
-
-    const refid = pagamento.productrefid
-    const expires = pagamento.expires
-    const price = pagamento.price
+    // eslint-disable-next-line camelcase
+    const { reference_id, expires_at, money } = await DbSet.getInstance().payments.findUnique({
+      where: {
+        uuid
+      }
+    })
 
     const body = {
-      referenceId: refid,
+      referenceId: reference_id,
       callbackUrl: `${process.env.URL}/api/hooks/picpay`,
       returnUrl: `${process.env.URL}/return`,
-      value: price,
-      expiresAt: expires,
+      value: money,
+      expiresAt: expires_at,
       purchaseMode: 'online',
       buyer: {
         firstName: nome,
@@ -42,8 +38,6 @@ module.exports = class PicPayCreate {
       }
     }).then(res => res.json())
 
-    res.status(200).json(picpay.paymentUrl)
-
-    await database.setPrepaid(refid)
+    res.status(200).json(picpay.qrcode.base64)
   }
 }

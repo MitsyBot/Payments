@@ -1,12 +1,10 @@
 const cors = require('cors')
 const express = require('express')
-
-const mongoose = require('mongoose')
 const ApiRouter = require('./router.js')
 const NotFound = require('./middlewares/NotFound')
 const ErrorHandler = require('./middlewares/ErrorHandler')
 const app = express()
-
+const prisma = require('./database/prisma')
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -16,16 +14,7 @@ app.use((_, res, next) => {
   return next()
 })
 
-const mongourl = process.env.MONGO_URL
-
-mongoose.connect(mongourl, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
-  if (err) {
-    return console.log(`Não foi possível se conectar a database: ${err}`)
-  }
-
-  console.log('Conectado a database')
-})
-
+prisma.getConnection()
 app.use(ApiRouter)
 
 app.use(NotFound)

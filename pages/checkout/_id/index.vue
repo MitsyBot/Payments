@@ -6,33 +6,40 @@
     Ocorreu um erro ao carregar paymentdata
   </h1>
   <div v-else>
-    <PayHeader
-      title="Como você quer pagar?"
-    />
     <div id="wrapper">
-      <div id="payment-methods">
-        <NuxtLink :to="`/checkout/${$route.params.id}/gateways/picpay`">
-          <div class="payment-button">
-            <img src="../../../assets/picpay.svg" alt="gateways.picpay.name" style="width: 100%; max-height: 80px;"><span style="display: block;">Cartão de Crédito, Saldo do PicPay</span>
-          </div>
-        </NuxtLink>
-      </div>
+      <PaymentStageOne v-if="stage === 1" :data="payment" @next-stage="nextStage()" />
+      <PaymentStageTwo v-if="stage === 2" :data="payment" @next-stage="nextStage()" />
+      <PaymentStageThree v-if="stage === 3" :data="payment" @next-stage="nextStage()" />
+      <PaymentStageFour v-if="stage === 4" :data="payment" @next-stage="nextStage()" />
+      <PaymentStageFive v-if="stage === 5" :data="payment" :qrcode="qr" @next-stage="nextStage()" />
     </div>
-    <PayFooter />
   </div>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      payment: null,
+      stage: 1,
+      qr: null
+    }
+  },
   async fetch () {
     const payment = await this.$axios.get(`${process.env.URL}/api/getpayment/${this.$route.params.id}`)
-    if (payment.data.paid === 'true' || payment.data.prepaid === 'true') {
-      this.$router.push('/missing')
-    }
+    this.payment = payment.data
   },
   head: {
     title: 'Escolha a forma de pagamento'
+  },
+  methods: {
+    nextStage () {
+      this.stage = this.stage + 1
+    },
+    qrStage () {
+      console.log(this.qr)
+      this.stage = 5
+    }
   }
-
 }
 </script>

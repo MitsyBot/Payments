@@ -1,5 +1,5 @@
 const fetch = require('node-fetch')
-const database = require('../../database/mongo')
+const DbSet = require('../../database/DbSet')
 
 module.exports = class PicPayHook {
   static async picpayHook (req, res) {
@@ -16,15 +16,28 @@ module.exports = class PicPayHook {
     }).then(res => res.json())
 
     if (status.status === 'paid') {
-      await database.setPaid(refid)
+      await DbSet.getInstance().payments.update({
+        where: {
+          reference_id: refid
+        },
+        data: {
+          paid: true,
+          paid_at: Date.now()
+        }
+      })
 
-      const compra = await database.getPaymentByRef(refid)
+      const compra = await DbSet.getInstance().payments.findUnique({
+        where: {
+          reference_id: refid
+        }
+      })
 
       const body = {
         ref: refid,
-        userid: compra.buyerid,
-        price: compra.price
+        userid: compra.user.id,
+        price: compra.money
       }
+
       await fetch(`${process.env.API_URL}/premium/buy`, {
         method: 'POST',
         body: JSON.stringify(body),

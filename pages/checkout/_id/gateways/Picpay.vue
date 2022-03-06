@@ -6,10 +6,6 @@
     Ocorreu um erro ao carregar paymentdata
   </h1>
   <div v-else>
-    <PayHeader
-      title="Preencha seus dados!"
-    />
-
     <FormsPicpayForm />
   </div>
 </template>
@@ -18,9 +14,7 @@
 export default {
   async fetch () {
     const payment = await this.$axios.get(`${process.env.URL}/api/getpayment/${this.$route.params.id}`)
-    if (payment.data.paid === 'true' || payment.data.prepaid === 'true') {
-      this.$router.push('/missing')
-    }
+    console.log(payment)
   },
   head: {
     title: 'Preencha suas informações'

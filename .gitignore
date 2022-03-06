@@ -6,6 +6,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+package-lock.jsona
+yarn.lock
 
 # Runtime data
 pids
@@ -88,3 +90,5 @@ sw.*
 
 # Vim swap files
 *.swp
+.env
+prisma

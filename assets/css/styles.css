@@ -81,6 +81,16 @@ footer {
   box-shadow: 0 0 15px #f895fb, 0 0 15px #f895fb, 0 0 15px #f895fb;
 }
 
+.button.red {
+  background-color: #ec4c4c;
+  color: rgb(255, 255, 255);
+}
+.button.red:hover {
+  background-color: #f85959;
+}
+.button.red.has-shadow:hover {
+  box-shadow: 0 0 15px #f85959, 0 0 15px #f85959, 0 0 15px #f85959;
+}
 
 li {
   margin-top: 0.7em;
