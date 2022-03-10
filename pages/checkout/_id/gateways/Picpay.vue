@@ -14,7 +14,6 @@
 export default {
   async fetch () {
     const payment = await this.$axios.get(`${process.env.URL}/api/getpayment/${this.$route.params.id}`)
-    console.log(payment)
   },
   head: {
     title: 'Preencha suas informações'

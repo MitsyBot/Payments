@@ -37,7 +37,6 @@ export default {
       this.stage = this.stage + 1
     },
     qrStage () {
-      console.log(this.qr)
       this.stage = 5
     }
   }
